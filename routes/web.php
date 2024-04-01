@@ -41,6 +41,9 @@ Route::get('/session', [SessionController::class, 'index']);
 Route::post('/session/login', [SessionController::class, 'login']);
 Route::get('/session/logout', [SessionController::class, 'logout']);
 
+Route::get('/session/register', [SessionController::class, 'register']);
+Route::post('/session/create', [SessionController::class, 'create']);
+
 
 Route::get('/', [HalamanController::class, 'index']);
 Route::get('/tentang', [HalamanController::class, 'tentang']);
