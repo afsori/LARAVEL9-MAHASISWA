@@ -35,7 +35,7 @@ use App\Http\Controllers\HalamanController;
 // Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 // Route::get('/mahasiswa/{id}', [MahasiswaController::class, 'detail']);
 
-Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('/mahasiswa', MahasiswaController::class)->middleware('isLogin');
 
 Route::get('/session', [SessionController::class, 'index']);
 Route::post('/session/login', [SessionController::class, 'login']);
@@ -45,6 +45,10 @@ Route::get('/session/register', [SessionController::class, 'register']);
 Route::post('/session/create', [SessionController::class, 'create']);
 
 
-Route::get('/', [HalamanController::class, 'index']);
+// Route::get('/', [HalamanController::class, 'index']);
 Route::get('/tentang', [HalamanController::class, 'tentang']);
 Route::get('/kontak', [HalamanController::class, 'kontak']);
+
+Route::get('/', function () {
+    return view('session/welcome');
+})->middleware('isTamu');
